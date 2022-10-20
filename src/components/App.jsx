@@ -1,16 +1,21 @@
 import { Component } from 'react';
-import css from './App.module.css'
+import css from './App.module.css';
+import { nanoid } from 'nanoid'
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: nanoid(4), name: 'Arnold Schwarzenegger' },
+      { id: nanoid(4), name: 'Sylvester Stallone' },
+      { id: nanoid(4), name: 'Bruce Willis' },
+      { id: nanoid(4), name: 'Jason Statham' },
+    ],
     name: '',
   };
 
   render() {
     return (
       <>
-        
         <form className={css.form}>
           <h2>Phonebook</h2>
           <label className={css.formField}>
@@ -23,20 +28,18 @@ class App extends Component {
               required
             />
           </label>
-          <button type="button" className={css.addButton}>Add contact</button>
 
+          <button type="button" className={css.addButton}>
+            Add contact
+          </button>
         </form>
 
         <div className={css.contactList}>
           <h2>Contact list</h2>
-        <ul>
-          <li>Arnold Schwarzenegger</li>
-          <li>Sylvester Stallone</li>
-          <li>Bruce Willis</li>
-          <li>Jason Statham</li>
-        </ul>
+          <ul>
+            {this.state.contacts.map(contact => <li key={contact.id}>{contact.name}</li>)}
+          </ul>
         </div>
-        
       </>
     );
   }
