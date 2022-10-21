@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import css from './App.module.css';
 import { nanoid } from 'nanoid';
+import { ContactList } from 'components/ContactList/ContactList';
 
 class App extends Component {
   state = {
@@ -12,7 +13,14 @@ class App extends Component {
     ],
     name: '',
     number: '',
+    filter: '',
   };
+
+  deleteContact = (contactId) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(el => el.id !== contactId),
+    }));
+  }
 
   render() {
     return (
@@ -48,14 +56,16 @@ class App extends Component {
 
         <div className={css.contactTable}>
           <h2 className={css.sectionTitle}>Contact list</h2>
-          <ul className={css.contactList}>
-            {this.state.contacts.map(contact => (
-              <li key={contact.id} className={css.contactItem}>
-                <span className={css.contactName}>{contact.name}</span>{' '}
-                <span>{contact.number}</span>
-              </li>
-            ))}
-          </ul>
+          <label className={css.formField}>
+            <span className={css.formField__name}>Find contact by name</span>
+            <input type="text" />
+          </label>
+          <ContactList
+            contacts={this.state.contacts}
+            deleteContact={this.deleteContact}
+          />
+
+          
         </div>
       </>
     );

@@ -1,0 +1,40 @@
+.contactList {
+    margin: 16px 0 0 0;
+    padding: 0;
+}
+
+.contactItem {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.contactItem:hover {
+    outline: 1px dashed grey;
+
+}
+
+.contactItem:not(:first-child) {
+    margin-top: 8px;
+}
+
+.contactName {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.contactNumber {
+    margin: 0 16px 0 auto;
+}
+
+.delButton {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.icon {
+    width: 20px;
+    fill: #212121;
+    height: auto;
+}

@@ -35,20 +35,5 @@
   border-radius: 4px;
 }
 
-.contactList {
-  margin: 16px 0 0 0;
-  padding: 0;
-}
 
-.contactItem {
-  display: flex;
-  justify-content: space-between;
-}
 
-.contactItem:not(:first-child) {
-  margin-top: 8px;
-}
-
-.contactName {
-  font-weight: 600;
-}
