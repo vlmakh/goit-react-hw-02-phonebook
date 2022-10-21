@@ -7,10 +7,6 @@
 .label input {
     width: 100%;
     box-sizing: border-box;
+    padding: 4px 8px;
 }
 
-.search {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 4px;
-}

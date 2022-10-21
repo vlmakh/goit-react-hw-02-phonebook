@@ -1,10 +1,10 @@
 import { Component } from 'react';
-import css from './ContactForm.module.css';
+import css from './AddForm.module.css';
 import { HiPhone, HiUserAdd } from 'react-icons/hi';
 import { MdOutlineDataSaverOn } from 'react-icons/md';
 import { Box } from 'components/Box/Box';
 
-class AddContactForm extends Component {
+class AddForm extends Component {
   state = { name: '', number: '' };
 
   onFormInput = event => {
@@ -23,8 +23,12 @@ class AddContactForm extends Component {
   render() {
     return (
       <form className={css.form} onSubmit={this.addContact}>
-        <p>Add new</p>
-        <Box mt={3} display="flex" justifyContent="space-between">
+        <Box
+          mt={3}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Box>
             <label className={css.formField}>
               <HiUserAdd className={css.icon} />
@@ -33,6 +37,7 @@ class AddContactForm extends Component {
                 name="name"
                 value={this.state.name}
                 onChange={this.onFormInput}
+                placeholder="Add new contact"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
@@ -62,4 +67,4 @@ class AddContactForm extends Component {
   }
 }
 
-export { AddContactForm };
+export { AddForm };
