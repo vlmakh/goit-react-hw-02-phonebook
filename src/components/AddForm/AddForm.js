@@ -23,12 +23,7 @@ class AddForm extends Component {
   render() {
     return (
       <form className={css.form} onSubmit={this.addContact}>
-        <Box
-          mt={3}
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box>
             <label className={css.formField}>
               <HiUserAdd className={css.icon} />
