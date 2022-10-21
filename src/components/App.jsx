@@ -4,6 +4,7 @@ import { Box } from './Box/Box';
 import { nanoid } from 'nanoid';
 import { AddContactForm } from './ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
+import {Filter } from 'components/Filter/Filter'
 
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
     filter: '',
   };
 
-  addContactOnFormSumbit = data => {
+  addContact = data => {
     const newContact = {
       id: nanoid(4), name: data.name, number: data.number
     }
@@ -35,20 +36,27 @@ class App extends Component {
     }));
   };
 
+  filterChange = event => {
+    this.setState({filter: event.currentTarget.value})
+  }
+
   render() {
+    const {contacts, filter} = this.state
+    const normalizedFilter = filter.toLowerCase()
+    const filteredContacts = contacts.filter(el => el.name.toLowerCase().includes(normalizedFilter))
+
     return (
       <Box width="360px" mx="auto" py={2}>
         <h1>Phonebook</h1>
-        <AddContactForm onSubmit={this.addContactOnFormSumbit } />
+        <AddContactForm onSubmit={this.addContact } />
 
         <Box p={3} mt={2} border="1px solid #212121" borderRadius={3}>
           <h2 className={css.sectionTitle}>Contacts</h2>
-          <label className={css.label}>
-            <p className={css.search}>Find contact by name</p>
-            <input type="text" />
-          </label>
+
+          <Filter value={filter} onChange={this.filterChange}/>
+
           <ContactList
-            contacts={this.state.contacts}
+            contacts={filteredContacts}
             deleteContact={this.deleteContact}
           />
         </Box >

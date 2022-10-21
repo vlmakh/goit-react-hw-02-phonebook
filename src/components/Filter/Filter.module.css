@@ -1,0 +1,16 @@
+.label {
+    display: block;
+    margin-top: 16px;
+    text-align: left;
+}
+
+.label input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
