@@ -1,0 +1,43 @@
+.form {
+  text-align: left;
+  width: 360px;
+  margin: 8px auto 0;
+  padding: 16px;
+  border: 1px solid #212121;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.formField {
+  display: flex;
+  align-items: center;
+}
+
+.formField:first-of-type {
+  margin-bottom: 16px;
+}
+
+.formField__name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.addButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 60px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.addButton:hover {
+  background-color: green;
+}
+
+.icon {
+    margin-right: 8px;
+    
+}

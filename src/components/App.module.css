@@ -1,33 +1,10 @@
+
 .sectionTitle {
   margin: 0;
 }
 
-.form {
-  /* text-align: center; */
-  width: 300px;
-  margin: 8px auto 0;
-  padding: 16px;
-  border: 1px solid #212121;
-  border-radius: 4px;
-}
-
-.formField {
-  display: block;
-  margin-top: 16px;
-}
-
-.formField__name {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.addButton {
-  margin-top: 16px;
-}
-
 .contactTable {
+  text-align: left;
   width: 300px;
   margin: 8px auto 0;
   padding: 16px;
@@ -36,4 +13,19 @@
 }
 
 
+.label {
+    display: block;
+    margin-top: 16px;
+    text-align: left;
+}
 
+.label input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search {     
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}

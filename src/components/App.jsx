@@ -1,73 +1,58 @@
 import { Component } from 'react';
 import css from './App.module.css';
+import { Box } from './Box/Box';
 import { nanoid } from 'nanoid';
+import { AddContactForm } from './ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
+
 
 class App extends Component {
   state = {
     contacts: [
-      { id: nanoid(4), name: 'Arnold Schwarzenegger', number: '555-8801' },
-      { id: nanoid(4), name: 'Sylvester Stallone', number: '555-8802' },
-      { id: nanoid(4), name: 'Bruce Willis', number: '555-8803' },
-      { id: nanoid(4), name: 'Jason Statham', number: '555-8804' },
+      { id: nanoid(4), name: 'Arnold Schwarzenegger', number: '5558801' },
+      { id: nanoid(4), name: 'Sylvester Stallone', number: '5558802' },
+      { id: nanoid(4), name: 'Bruce Willis', number: '5558803' },
+      { id: nanoid(4), name: 'Jason Statham', number: '5558804' },
     ],
-    name: '',
-    number: '',
     filter: '',
   };
 
-  deleteContact = (contactId) => {
+  addContactOnFormSumbit = data => {
+    const newContact = {
+      id: nanoid(4), name: data.name, number: data.number
+    }
+    
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newContact],
+    }));
+
+    console.log(newContact)
+  } 
+
+  deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(el => el.id !== contactId),
     }));
-  }
+  };
 
   render() {
     return (
-      <>
-        <form className={css.form}>
-          <h2 className={css.sectionTitle}>Phonebook</h2>
-          <label className={css.formField}>
-            <span className={css.formField__name}>Name</span>
-            <input
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </label>
+      <Box width="360px" mx="auto" py={2}>
+        <h1>Phonebook</h1>
+        <AddContactForm onSubmit={this.addContactOnFormSumbit } />
 
-          <label className={css.formField}>
-            <span className={css.formField__name}>Number</span>
-            <input
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </label>
-
-          <button type="button" className={css.addButton}>
-            Add contact
-          </button>
-        </form>
-
-        <div className={css.contactTable}>
-          <h2 className={css.sectionTitle}>Contact list</h2>
-          <label className={css.formField}>
-            <span className={css.formField__name}>Find contact by name</span>
+        <Box p={3} mt={2} border="1px solid #212121" borderRadius={3}>
+          <h2 className={css.sectionTitle}>Contacts</h2>
+          <label className={css.label}>
+            <p className={css.search}>Find contact by name</p>
             <input type="text" />
           </label>
           <ContactList
             contacts={this.state.contacts}
             deleteContact={this.deleteContact}
           />
-
-          
-        </div>
-      </>
+        </Box >
+      </Box>
     );
   }
 }

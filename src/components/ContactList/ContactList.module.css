@@ -5,11 +5,13 @@
 
 .contactItem {
     display: flex;
-    /* justify-content: space-between; */
+    align-items: center;
+
 }
 
 .contactItem:hover {
-    outline: 1px dashed grey;
+    /* outline: 1px dashed grey; */
+    /* box-shadow: inset 0 0 4px black; */
 
 }
 
@@ -27,13 +29,24 @@
 }
 
 .delButton {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    border-radius: 50%;
+}
+
+.delButton:hover {
+    background-color: red;
 }
 
 .icon {
+    
     width: 20px;
     fill: #212121;
     height: auto;
