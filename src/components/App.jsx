@@ -17,6 +17,7 @@ class App extends Component {
   };
 
   addContact = data => {
+    
     const { contacts } = this.state;
 
     if (

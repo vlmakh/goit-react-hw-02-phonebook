@@ -5,20 +5,13 @@
   padding: 16px;
   border: 1px solid #212121;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
-.formField {
+.addInput {
   display: flex;
   align-items: center;
-}
-
-.formField:first-of-type {
-  margin-bottom: 16px;
-}
-
-.formField input {
-  padding: 4px 8px;
+  margin-left: 8px;
+  padding: 4px;
 }
 
 .addButton {
@@ -36,8 +29,4 @@
 
 .addButton:hover {
   background-color: green;
-}
-
-.icon {
-  margin-right: 8px;
 }

@@ -1,65 +1,62 @@
-import { Component } from 'react';
+import PropTypes from 'prop-types';
 import css from './AddForm.module.css';
 import { HiPhone, HiUserAdd } from 'react-icons/hi';
 import { MdOutlineDataSaverOn } from 'react-icons/md';
 import { Box } from 'components/Box/Box';
+import { Formik, Form, Field } from 'formik';
 
-class AddForm extends Component {
-  state = { name: '', number: '' };
-
-  onFormInput = event => {
-    const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
+export function AddForm({ onSubmit }) {
+  const addContact = (values, { resetForm }) => {
+    onSubmit(values);
+    resetForm();
   };
 
-  addContact = event => {
-    event.preventDefault();
-
-    this.setState({ name: '', number: '' });
-
-    this.props.onSubmit(this.state);
-  };
-
-  render() {
-    return (
-      <form className={css.form} onSubmit={this.addContact}>
+  return (
+    <Formik
+      onSubmit={addContact}
+      initialValues={{
+        name: '',
+        number: '',
+      }}
+    >
+      <Form className={css.form}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box>
-            <label className={css.formField}>
-              <HiUserAdd className={css.icon} />
-              <input
+            <Box display="flex" alignItems="center" mb={3}>
+              <HiUserAdd />
+              <Field
+                className={css.addInput}
                 type="text"
                 name="name"
-                value={this.state.name}
-                onChange={this.onFormInput}
                 placeholder="Add new contact"
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
               />
-            </label>
+            </Box>
 
-            <label className={css.formField}>
-              <HiPhone className={css.icon} />
-              <input
+            <Box display="flex" alignItems="center">
+              <HiPhone />
+              <Field
+                className={css.addInput}
                 type="tel"
                 name="number"
-                value={this.state.number}
-                onChange={this.onFormInput}
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
               />
-            </label>
+            </Box>
           </Box>
 
           <button type="submit" className={css.addButton}>
             <MdOutlineDataSaverOn size="40" />
           </button>
         </Box>
-      </form>
-    );
-  }
+      </Form>
+    </Formik>
+  );
 }
 
-export { AddForm };
+AddForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
