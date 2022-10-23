@@ -17,6 +17,7 @@ class App extends Component {
   };
 
   addContact = data => {
+    
     const { contacts } = this.state;
 
     if (
@@ -41,7 +42,7 @@ class App extends Component {
 
   deleteContact = contactId => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(el => el.id !== contactId),
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
 

@@ -1,12 +1,8 @@
-.label {
-    display: block;
-    margin-top: 16px;
-    text-align: left;
+.filterInput {
+  display: block;
+  margin-top: 16px;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 8px;
 }
-
-.label input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 4px 8px;
-}
-
