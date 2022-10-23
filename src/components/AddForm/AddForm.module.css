@@ -30,3 +30,13 @@
 .addButton:hover {
   background-color: green;
 }
+
+.mistake {
+  position: absolute;
+  bottom: 0;
+  transform: translatey(100%);
+
+  font-size: 10px;
+  background-color: white;
+  color: red;
+}
