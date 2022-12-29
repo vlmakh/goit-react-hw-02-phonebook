@@ -7,8 +7,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 let schema = yup.object().shape({
-  name: yup.string().required('required field'),
-  number: yup.number().required('required field'),
+  name: yup.string().required(),
+  number: yup.number().required(),
 });
 
 export function AddForm({ onSubmit }) {
