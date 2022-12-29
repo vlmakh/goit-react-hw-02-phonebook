@@ -17,7 +17,6 @@ class App extends Component {
   };
 
   addContact = data => {
-    
     const { contacts } = this.state;
 
     if (
@@ -26,8 +25,7 @@ class App extends Component {
       )
     ) {
       alert(`${data.name} is already in contacts`);
-    }
-    else {
+    } else {
       const newContact = {
         id: nanoid(4),
         name: data.name,
