@@ -54,7 +54,7 @@ class App extends Component {
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
-
+    
     return (
       <Box width="360px" mx="auto" py={2}>
         <h1>Phonebook</h1>
@@ -63,7 +63,11 @@ class App extends Component {
         <Box p={3} mt={2} border="1px solid #212121" borderRadius={3}>
           <h2>Contacts</h2>
 
-          <Filter value={filter} onChange={this.filterChange} />
+          {(filteredContacts.length > 0 || filter) ? (
+            <Filter value={filter} onChange={this.filterChange} />
+          ) : (
+            <Box mt="20px"><p>No contacts in book</p></Box>
+          )}
 
           <ContactList
             contacts={filteredContacts}
